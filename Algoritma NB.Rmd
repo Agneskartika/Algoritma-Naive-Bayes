@@ -1,7 +1,7 @@
 ---
-title: Algoritma Naive Bayes dengan R
+title: "Algoritma Naive Bayes dengan R"
 date: "`r Sys.Date()`"
-author: Agnes Kartika-Institut Teknologi Statistika dan Bisnis Muhammadiyah
+author: "Agnes Kartika-Institut Teknologi Statistika dan Bisnis Muhammadiyah"
 output:
   rmdformats::readthedown:
     self_contained: true
@@ -22,24 +22,60 @@ text-align: justify}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# R Markdown
+# Algoritma Naive Bayes
+Naive Bayes adalah metode yang cocok untuk klasifikasi biner dan multiclass. Metode yang juga dikenal sebagai Naive Bayes Classifier ini menerapkan teknik supervised klasifikasi objek di masa depan dengan menetapkan label kelas ke instance/catatan menggunakan probabilitas bersyarat. Probabilitas bersyarat adalah ukuran peluang suatu peristiwa yang terjadi berdasarkan peristiwa lain yang telah (dengan asumsi, praduga, pernyataan, atau terbukti) terjadi.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents [@deCarvalho2012]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Tahapan Algoritma Naive Bayes
+1. Menghitung jumlah kelas / label
+2. Menghitung Jumlah Kasus Per Kelas
+3. Kalikan Semua Variable Kelas
+4. Bandingkan Hasil Per Kelas
 
-```{r cars}
-summary(cars)
+
+# Kelebihan
+1. Mudah untuk dibuat
+2. Hasil yang diperoleh bagus
+
+# Kekurangan
+Asumsi independence antar atribut membuat akurasi berkurang (karena biasanya ada keterkaitan)
+
+
+# Eksperimen Algoritma Naive Bayes
+## library
+```{r eval=FALSE}
+library (knitr)
+library (ggplot2)
+library (tidyr)
+library (caret)
+library (e1071)
+library (ROCR)
+
+# Import Data 
+steel <- read.csv(hargasaham_2012_2016)
+str (steel)
+```
+# Data
+```{r}
+library(readr)
+hargasaham_2012_2016 <- read_csv("~/dataset/hargasaham-2012-2016.csv")
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+hargasaham_2012_2016
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# Membuat Data Training dan Data Tasting
+```{r}
+set.seed
+intrain<-sample(nrow(hargasaham_2012_2016),nrow(hargasaham_2012_2016))
+hargasaham_2012_2016_train<-hargasaham_2012_2016[intrain,]
+hargasaham_2012_2016_test<-hargasaham_2012_2016[-intrain,]
+```
 
-# Referensi
+# Pemodelan
+```{r}
+
+```
+
+# Refrensi
