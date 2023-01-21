@@ -98,3 +98,10 @@ hasil=confusionMatrix(table(prediksi,hargasaham_2012_2016_test)
 ```
 
 # Refrensi
+
+1. https://rpubs.com/awanindra01/NaiveBayes_new
+2. https://rpubs.com/presda/988784
+3. https://github.com/Agneskartika/Algoritma-Naive-Bayes
+4. https://drive.google.com/file/d/17erhFSQ8ThgnBP5Oo5RhE1PyOYSUa7Iw/view?usp=sharing
+5. https://algorit.ma/blog/naive-bayes-2022/
+6. https://medium.com/@hasna.firda14/implementasi-algoritma-naive-bayes-classifier-with-r-984808f3d996
