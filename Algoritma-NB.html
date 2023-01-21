@@ -7,7 +7,7 @@
 
         <meta name="author" content="Agnes Kartika-Institut Teknologi Statistika dan Bisnis Muhammadiyah" />
     
-        <meta name="date" content="2023-01-12" />
+        <meta name="date" content="2023-01-21" />
     
     <title>Algoritma Naive Bayes dengan R</title>
 
@@ -205,7 +205,7 @@
     </div>
     <div id="postamble" data-toggle="wy-nav-shift" class="status">
                   <p class="author"><span class="glyphicon glyphicon-user"></span> Agnes Kartika-Institut Teknologi Statistika dan Bisnis Muhammadiyah</p>
-                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-01-12</p>
+                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-01-21</p>
           </div>
    </div>
      
@@ -338,14 +338,28 @@ text-align: justify}
 ##     }
 ##     .Internal(set.seed(seed, i.knd, normal.kind, sample.kind))
 ## }
-## &lt;bytecode: 0x00000000210c0e08&gt;
+## &lt;bytecode: 0x00000000211263a0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>intrain<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="fu">nrow</span>(hargasaham_2012_2016),<span class="fu">nrow</span>(hargasaham_2012_2016))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>hargasaham_2012_2016_train<span class="ot">&lt;-</span>hargasaham_2012_2016[intrain,]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hargasaham_2012_2016_test<span class="ot">&lt;-</span>hargasaham_2012_2016[<span class="sc">-</span>intrain,]</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Mengimput Dataset dan Packages yang di Butuhkan</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span></code></pre></div>
+<pre><code>## Warning: package &#39;e1071&#39; was built under R version 4.1.3</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<pre><code>## Warning: package &#39;caret&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
 </div>
 <div id="pemodelan" class="section level1">
 <h1>Pemodelan</h1>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(hargasaham_2012_2016_train)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>modelNB <span class="ot">&lt;-</span> <span class="fu">naiveBayes</span>(hargasaham_2012_2016 <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">train</span>(hargasaham_2012_2016) </span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Melakukan Prediksi</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>prediksi <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelNB, hargasaham_2012_2016_test)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>hasil<span class="ot">=</span><span class="fu">confusionMatrix</span>(<span class="fu">table</span>(prediksi,hargasaham_2012_2016_test) </span></code></pre></div>
 </div>
 <div id="refrensi" class="section level1">
 <h1>Refrensi</h1>

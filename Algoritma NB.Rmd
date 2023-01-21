@@ -72,10 +72,29 @@ intrain<-sample(nrow(hargasaham_2012_2016),nrow(hargasaham_2012_2016))
 hargasaham_2012_2016_train<-hargasaham_2012_2016[intrain,]
 hargasaham_2012_2016_test<-hargasaham_2012_2016[-intrain,]
 ```
+```{r}
+#Mengimput Dataset dan Packages yang di Butuhkan
+library(e1071)
+library(caret)
+```
+
 
 # Pemodelan
-```{r}
 
+```{r}
+View(hargasaham_2012_2016_train)
+```
+
+
+```{r eval=FALSE}
+modelNB <- naiveBayes(hargasaham_2012_2016 ~ ., data = train(hargasaham_2012_2016) 
+```
+
+```{r eval=FALSE}
+# Melakukan Prediksi
+prediksi <- predict(modelNB, hargasaham_2012_2016_test)
+
+hasil=confusionMatrix(table(prediksi,hargasaham_2012_2016_test) 
 ```
 
 # Refrensi
